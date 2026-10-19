@@ -15,7 +15,7 @@ $total_semua = count_total_mahasiswa();
 // Ambil keyword pencarian jika ada
 
 // Percobaan 4-4 Langkah 2
-$keyword = isset($_GET['searh']) ? trim($_POST['serach']) : '';
+$keyword = isset($_GET['search']) ? trim($_POST['search']) : '';
 $daftar_mahasiswa = get_all_mahasiswa($keyword);
 $total_semua = count_total_mahasiswa();
 $total_tampil = count($daftar_mahasiswa);
@@ -135,8 +135,7 @@ require_once __DIR__ . '/includes/header.php';
                             <td><a href="mailto:<?= htmlspecialchars($mhs['email']) ?>" class="link-email"><?= $mhs['email'] ?></a></td>
                             <td>
                                 <!-- Percobaan 4-2 Langkah 5 -->
-                                <a href="proses_hapus.php?npm=<?= urldecode($mhs['npm'])?>"class="btn btn-danger btn-sm"onclick="return confirm('Apakah anda yakin ingin menghapus mahasiswa: <?=  htmlspecialchars(addslashes($mhs['nama'])) ?>(npm: <?=  htmlspecialchars($mhs['npm']) ?>)?');"
-                                Hapus</a>
+                                <a href="proses_hapus.php?npm=<?= $mhs['npm'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus mahasiswa: <?= htmlspecialchars(addslashes($mhs['nama'])) ?> (npm: <?= htmlspecialchars($mhs['npm']) ?>)?');">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

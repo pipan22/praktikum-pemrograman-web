@@ -14,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
  * Inisialisasi data mahasiswa pada session jika belum ada
  */
 function init_mahasiswa_session() {
-    if (isset($_SESSION['daftar_mahasiswa'])) {
+    if (!isset($_SESSION['daftar_mahasiswa'])) {
         $_SESSION['daftar_mahasiswa'] = [
         [
             'npm' => '230101001',
@@ -127,7 +127,7 @@ function tambah_mahasiswa($npm, $nama, $program_studi, $angkatan, $email) {
     if (strlen($nama) < 3) {
         return [
             'status' => false,
-            'message' => 'Nama lengkap minpmal 3 karakter!'
+            'message' => 'Nama lengkap minimal 3 karakter!'
         ];
     }
 
